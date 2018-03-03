@@ -13,9 +13,9 @@ Assignment descriptions can be found below:
 
 To run the code you will need the algs4 library which can be found https://algs4.cs.princeton.edu/home/
 Please follow the instructions:
-Windows: https://algs4.cs.princeton.edu/windows/
-Linux: https://algs4.cs.princeton.edu/linux/
-Mac OS X: https://algs4.cs.princeton.edu/mac/
+* Windows: https://algs4.cs.princeton.edu/windows/
+* Linux: https://algs4.cs.princeton.edu/linux/
+* Mac OS X: https://algs4.cs.princeton.edu/mac/
 
 
 ## Authors
