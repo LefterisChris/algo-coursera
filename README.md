@@ -7,7 +7,8 @@ https://www.coursera.org/learn/algorithms-part1
 
 Assignment descriptions can be found below:
 * [Assignment 1](http://coursera.cs.princeton.edu/algs4/assignments/percolation.html)
-* [Assignment 2](http://coursera.cs.princeton.edu/algs4/assignments/queues.html) 
+* [Assignment 2](http://coursera.cs.princeton.edu/algs4/assignments/queues.html)
+* [Assignment 3](http://coursera.cs.princeton.edu/algs4/assignments/collinear.html)
 
 ### Prerequisites
 
