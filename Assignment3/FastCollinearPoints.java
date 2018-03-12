@@ -39,24 +39,30 @@ public class FastCollinearPoints {
             
             int j = 0, col = 1;
             double prev_slope = 0.0;
-            Point last = null;
-
-            while (j < tmp.length && p0.compareTo(tmp[j]) == 1) {
+            Point last = null, checked;
+            
+            // StdOut.println("Prev point "+tmp[j].toString());
+            while (j < tmp.length && p0.compareTo(tmp[j]) > 0) {
+                checked = tmp[j];
                 j++;
+                while (j < tmp.length && checked.slopeTo(tmp[j]) == p0.slopeTo(tmp[j])) {
+                    j++;
+                }
             }
             if (j < tmp.length) {
                 last = tmp[j];
-                prev_slope = p0.slopeTo(tmp[j++]);
+                prev_slope = p0.slopeTo(tmp[j]);
+                j++;
             }
             
             while (j < tmp.length) {
-                // ommit all the points for which the
-                // current point is not the origin
-                if (p0.compareTo(tmp[j]) == -1) {
+                // StdOut.println("Current point "+tmp[j].toString());
+                // if the current point is above origin
+                if (p0.compareTo(tmp[j]) < 0) {
+                    // StdOut.println("Current point "+tmp[j].toString());
                     // check slope
                     if (prev_slope == p0.slopeTo(tmp[j])) {
                         col++;
-                        // StdOut.println("Current point "+tmp[j].toString()+" col "+col);
                     }
                     else {
                         if (col >= 3) {
@@ -70,11 +76,26 @@ public class FastCollinearPoints {
                     prev_slope = p0.slopeTo(tmp[j]);
                 }
                 else {
+                    // check first the last point 
                     if (last != null && col >= 3) {
                         if (num == segs.length)
                             resize(2*segs.length);
                         segs[num++] = new LineSegment(p0, last);
                         last = null;
+                    }
+                    // ommit all the points that have the same slope
+                    // with the origin as the lower (already checked) 
+                    // has with the origin
+                    while (j < tmp.length && p0.compareTo(tmp[j]) > 0) {
+                        // StdOut.println("Point below "+tmp[j].toString());
+                        checked = tmp[j++];
+                        while (j < tmp.length && checked.slopeTo(tmp[j]) == p0.slopeTo(tmp[j])) {
+                            j++;
+                        }
+                    }
+                    if (j < tmp.length) {
+                        last = tmp[j];
+                        prev_slope = p0.slopeTo(tmp[j]);
                         col = 1;
                     }
                 }
